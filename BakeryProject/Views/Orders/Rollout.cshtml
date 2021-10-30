@@ -1,0 +1,69 @@
+﻿@model BakeryProject.Models.ProductmaterialVM
+@{
+    ViewBag.Title = "Rollout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-8">
+        <h4>Daily Production Rollout</h4>
+    </div>
+    <div class="col-md-4">
+
+        @*<input type="submit" class="btn btn-primary" value="Submit Production Plan" />*@
+
+    </div>
+</div>
+@Html.HiddenFor(x => x.Productid)
+
+
+
+    <table class="table table-bordered">
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayName("Product")
+            </th>
+            <th>
+                @Html.DisplayName("Quantity")
+            </th>
+            <th>
+                @Html.DisplayName("Status")
+            </th>
+            
+            <th>Rollout Product</th>
+        </tr>
+
+        @for (int i = 0; i < Model.products.Count; i++)
+        {
+
+    <tr>
+        <td>@Html.HiddenFor(model => Model.products[i].Dailyprodid)</td>
+        <td>
+            @Html.DisplayFor(model => Model.products[i].Product)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.products[i].Quantity)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => Model.products[i].Status)
+        </td>
+        @if (Model.products[i].Status == "InProgress")
+        {
+            <td>
+                @Html.ActionLink("Rollout", "RolloutProduct", new { id = Model.products[i].Dailyprodid })
+            </td>
+        }
+        else
+        {
+            <td></td>
+        }
+
+    </tr>
+        }
+
+    </table>
+
+

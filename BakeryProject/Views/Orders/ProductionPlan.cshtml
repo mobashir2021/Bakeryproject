@@ -1,0 +1,63 @@
+﻿@model BakeryProject.Models.ProductmaterialVM
+@{
+    ViewBag.Title = "ProductionPlan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("SubmitProductionPlan", "Orders", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-8">
+            <h4>Production Plan</h4>
+        </div>
+        <div class="col-md-4">
+
+            <input type="submit" class="btn btn-primary" value="Submit Production Plan" />
+            
+        </div>
+    </div>
+    @Html.HiddenFor(x => x.Productid)
+    <div class="row">
+
+
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayName("Product")
+                </th>
+                <th>
+                    @Html.DisplayName("Quantity")
+                </th>
+                <th>
+                    @Html.DisplayName("Extra Quantity")
+                </th>
+                @*<th></th>*@
+            </tr>
+
+            @for (int i = 0; i < Model.products.Count; i++)
+            {
+
+                <tr>
+                    <td>@Html.HiddenFor(model => Model.products[i].Productid)</td>
+                    <td>
+                        @Html.DisplayFor(model => Model.products[i].Product)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => Model.products[i].Quantity)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => Model.products[i].ExtraQuantity)
+                    </td>
+                    @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Productid }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Customerid }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Customerid })
+                    </td>*@
+                </tr>
+            }
+
+        </table>
+    </div>
+
+}

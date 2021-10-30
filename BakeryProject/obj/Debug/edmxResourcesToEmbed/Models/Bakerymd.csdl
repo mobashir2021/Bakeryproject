@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BakeryprojModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adminlogin">
+    <Key>
+      <PropertyRef Name="Adminlogin1" />
+    </Key>
+    <Property Name="Adminlogin1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DailyOrder">
+    <Key>
+      <PropertyRef Name="DailyOrderid" />
+    </Key>
+    <Property Name="DailyOrderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Productid" Type="Int32" />
+    <Property Name="Orderdate" Type="DateTime" Precision="3" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Customerid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Rawmaterial">
+    <Key>
+      <PropertyRef Name="Rawmaterialid" />
+    </Key>
+    <Property Name="Rawmaterialid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rawmaterial1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Baseprice" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="BakeryprojEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adminlogins" EntityType="Self.Adminlogin" />
+    <EntitySet Name="DailyOrders" EntityType="Self.DailyOrder" />
+    <EntitySet Name="Rawmaterials" EntityType="Self.Rawmaterial" />
+    <EntitySet Name="Productmaterials" EntityType="BakeryprojModel.Productmaterial" />
+    <EntitySet Name="RawmaterialStocks" EntityType="BakeryprojModel.RawmaterialStock" />
+    <EntitySet Name="OrderPlaceds" EntityType="BakeryprojModel.OrderPlaced" />
+    <EntitySet Name="DispatchOrders" EntityType="BakeryprojModel.DispatchOrder" />
+    <EntitySet Name="Dailyproductions" EntityType="BakeryprojModel.Dailyproduction" />
+    <EntitySet Name="Logintables" EntityType="BakeryprojModel.Logintable" />
+    <EntitySet Name="Customers" EntityType="BakeryprojModel.Customer" />
+    <EntitySet Name="DeliveryInfoes" EntityType="BakeryprojModel.DeliveryInfo" />
+    <EntitySet Name="Products" EntityType="BakeryprojModel.Product" />
+    <EntitySet Name="States" EntityType="BakeryprojModel.State" />
+  </EntityContainer>
+  <EntityType Name="Productmaterial">
+    <Key>
+      <PropertyRef Name="Productmaterialid" />
+    </Key>
+    <Property Name="Productmaterialid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Productid" Type="Int32" />
+    <Property Name="Rawmaterialid" Type="Int32" />
+    <Property Name="Quantity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Totalprice" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Units" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="RawmaterialStock">
+    <Key>
+      <PropertyRef Name="RawmaterialStockid" />
+    </Key>
+    <Property Name="RawmaterialStockid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Dates" Type="DateTime" Precision="3" />
+    <Property Name="Rawmaterialid" Type="Int32" />
+    <Property Name="Instock" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Outstock" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="OrderPlaced">
+    <Key>
+      <PropertyRef Name="OrderPlacedid" />
+    </Key>
+    <Property Name="OrderPlacedid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customerid" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DispatchOrder">
+    <Key>
+      <PropertyRef Name="DispatchOrdersId" />
+    </Key>
+    <Property Name="DispatchOrdersId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeliveryId" Type="Int32" />
+    <Property Name="Customerid" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="InvoicePath" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Dailyproduction">
+    <Key>
+      <PropertyRef Name="Dailyproductionid" />
+    </Key>
+    <Property Name="Dailyproductionid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Productid" Type="Int32" />
+    <Property Name="Productdate" Type="DateTime" Precision="3" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Goodproduct" Type="Int32" />
+    <Property Name="BadProduct" Type="Int32" />
+    <Property Name="ProductionStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DispatchedQuantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Logintable">
+    <Key>
+      <PropertyRef Name="Logintableid" />
+    </Key>
+    <Property Name="Logintableid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Roles" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Mobileno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customerid" />
+    </Key>
+    <Property Name="Customerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customer1" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Branch" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Mobileno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Watsappno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="GSTIN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DeliveryInfo">
+    <Key>
+      <PropertyRef Name="DeliveryInfoId" />
+    </Key>
+    <Property Name="DeliveryInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeliveryBoyName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="WatsappNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="VehicleNo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Productid" />
+    </Key>
+    <Property Name="Productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Baseprice" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HSNCode" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="AltQty" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="CGST" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SGST" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="State1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,43 @@
+﻿@model BakeryProject.Models.Rawmaterial
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rawmaterial</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rawmaterial1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rawmaterial1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Baseprice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Baseprice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Rawmaterialid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

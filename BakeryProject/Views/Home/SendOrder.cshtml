@@ -1,0 +1,75 @@
+﻿@model BakeryProject.Models.ProductmaterialVM
+@{
+    Layout = null;
+    var vals = Model.products;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Send Order</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div class="container-fluid">
+        @using (Html.BeginForm("SendOrderPost", "Home", FormMethod.Post))
+        { 
+            @Html.HiddenFor(modelItem => Model.Orderid)
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th></th>
+                    <th>
+                        @Html.DisplayName("Product")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Quantity")
+                    </th>
+
+                    @*<th></th>*@
+                </tr>
+
+                @for (int i = 0; i < Model.products.Count; i++)
+                {
+                    
+                    <tr>
+                        <td>@Html.HiddenFor(model => Model.products[i].Productid)</td>
+                        <td>
+                            @Html.DisplayFor(model => Model.products[i].Product)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => Model.products[i].Quantity)
+                        </td>
+
+                        @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Productid }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Customerid }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Customerid })
+                    </td>*@
+                    </tr>
+                }
+
+            </table>
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <input type="submit" class="btn btn-primary" value="Submit Order" />
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        }
+            
+    </div>
+    
+
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>

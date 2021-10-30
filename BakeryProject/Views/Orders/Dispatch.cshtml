@@ -1,0 +1,114 @@
+﻿@model BakeryProject.Models.ProductmaterialVM
+@{
+    ViewBag.Title = "Dispatch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h4>Dispatch</h4>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.DropDownList("Customerid", ViewBag.Customer as SelectList, "Select Customer", new { @class = "form-control", name = "Customerid", onchange = "this.form.submit();" })
+        </div>
+        <div class="col-md-4">
+            @if (Model.IsDispatchEnabled)
+            {
+                @Html.DropDownList("DeliveryInfoId", ViewBag.Delivery as SelectList, "Select Delivery", new { @class = "form-control", name = "DeliveryInfoId" })
+            }
+            else
+            {
+                
+            }
+
+        </div>
+        <div class="col-md-4">
+            @if (Model.IsDispatchEnabled)
+            {
+                <input type="submit" class="btn btn-primary" name="dispatch" value="Dispatch" />
+            }
+            else
+            {
+                <input type="submit" class="btn btn-primary" name="dispatch" value="Dispatch" disabled="disabled" />
+            }
+
+        </div>
+    </div>
+    @Html.HiddenFor(x => x.Productid)
+
+    
+
+
+        <table class="table table-bordered ">
+            <tr>
+                <th style="display:none;"></th>
+                <th style="display:none;"></th>
+                <th style="display:none;"></th>
+                <th style="display:none;"></th>
+                <th style="display:none;"></th>
+                <th style="display:none;"></th>
+                <th>
+                    @Html.DisplayName("Product")
+                </th>
+                <th>
+                    @Html.DisplayName("Quantity")
+                </th>
+                <th>
+                    @Html.DisplayName("Good Quantity")
+                </th>
+                <th>
+                    @Html.DisplayName("Bad Quantity")
+                </th>
+                <th>
+                    @Html.DisplayName("Dispatch Quantity")
+                </th>
+                @*<th></th>*@
+            </tr>
+
+            @for (int i = 0; i < Model.products.Count; i++)
+            {
+
+                <tr>
+                    <td style="display:none;">@Html.HiddenFor(model => Model.products[i].Productid)</td>
+                    <td style="display:none;">@Html.HiddenFor(model => Model.products[i].Dailyorderid)</td>
+                    <td style="display:none;">@Html.HiddenFor(model => Model.products[i].Dailyprodid)</td>
+                    <td style="display:none;">@Html.HiddenFor(model => Model.products[i].GoodQuantity)</td>
+                    <td style="display:none;">@Html.HiddenFor(model => Model.products[i].BadQuantity)</td>
+                    <td style="display:none;">@Html.HiddenFor(model => Model.products[i].Quantity)</td>
+                    <td>
+                        @Html.DisplayFor(model => Model.products[i].Product)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => Model.products[i].Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => Model.products[i].GoodQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => Model.products[i].BadQuantity)
+                    </td>
+                    @if (Model.IsDispatchEnabled)
+                    {
+                        <td>
+                            @Html.EditorFor(model => Model.products[i].DispatchedQuantity)
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.Label("Dispatched")
+                        </td>
+                    }
+
+                    @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Productid }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Customerid }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Customerid })
+                </td>*@
+                </tr>
+            }
+
+        </table>
+
+}

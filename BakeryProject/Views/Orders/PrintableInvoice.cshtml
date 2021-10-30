@@ -1,0 +1,156 @@
+﻿@{
+    Layout = null;
+}
+
+@model BakeryProject.Models.ProductmaterialVM
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div style="border: solid 1px;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="text-align: left; vertical-align: bottom;">
+                    <h3 style="font-weight: bold">CRUST BAKERS</h3>
+                    <h6>
+                        XVII/327,Mezhukkattil Building, Edachala North, Aluva, Ernakulam, Ph 9400145666, GSTIN/UIN:32AAPFO0090H1ZO, StateName: Kerala,Code:32,Email:crustbakes2001@gmail.com
+                    </h6>
+
+                </td>
+                <td style="text-align: right;">
+                    <h5>Bill No: @Model.BillNo</h5>
+                    <h5>Date: @Model.Billdate</h5>
+                    <h5>Vehicle No: @Model.delObj.VehicleNo</h5>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />
+
+        <h2 style="font-weight: bold; text-align:center;">Bill Of Supply</h2>
+        <table style="width: 100%;">
+            <tr>
+                <td style="text-align: left; vertical-align: bottom;" colspan="4">
+                    <span>To : </span>
+                    <span style="font-weight:bold; font-size:20px;">
+                        @Model.custObj.Customer1 , @Model.custObj.Address
+                    </span>
+
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; vertical-align: bottom;">
+                    <span>State: @Model.custObj.State</span>
+                </td>
+                <td style="text-align: left; vertical-align: bottom;">
+                    <span>CODE: @Model.custObj.Code</span>
+                </td>
+                <td style="text-align: left; vertical-align: bottom;">
+                    <span>GSTIN: @Model.custObj.GSTIN</span>
+                </td>
+                <td style="text-align: left; vertical-align: bottom;">
+                    <span>Phoneno: @Model.custObj.Mobileno</span>
+                </td>
+            </tr>
+        </table>
+
+        <table style="border: 1px solid black;">
+            <tr>
+                <th>
+                    @Html.DisplayName("SRNO")
+                </th>
+                <th>
+                    @Html.DisplayName("Name of Product")
+                </th>
+                <th>
+                    @Html.DisplayName("HSN Code")
+                </th>
+                <th>
+                    @Html.DisplayName("QTY")
+                </th>
+                <th>
+                    @Html.DisplayName("Rate")
+                </th>
+                <th>
+                    @Html.DisplayName("Taxable Value")
+                </th>
+                <th>
+                    @Html.DisplayName("% CGST Amt")
+                </th>
+                <th>
+                    @Html.DisplayName("% SGST Amt")
+                </th>
+                <th>@Html.DisplayName("Total")</th>
+            </tr>
+
+            @foreach (var item in Model.products)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SRNO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HSNCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DispatchedQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalRate)
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalRate)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <hr/>
+        <div>
+            <span style="float:left; font-weight:bold;">
+                E & OE
+            </span>
+            <span style="float:right; font-weight:bold"> @Model.TotalRate</span>
+        </div>
+        <div>
+            <span style="float:left; font-weight:bold;">
+                In Words: INR @Model.WTotalRate 
+            </span>
+        </div>
+
+        <br />
+        <br />
+
+
+        <p style="text-align: center; font-style: italic; font-size: 10pt">
+
+        </p>
+
+        <div>
+            <h4 style="text-decoration:underline;">Declaration</h4>
+        </div>
+
+        <br />
+        <div>
+            <span style="float:right;">CRUST BAKERS</span>
+        </div>
+
+    </div>
+</body>
+</html>

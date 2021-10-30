@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4bfd580aa20142f1955cda48fd72be58" Name="Diagram1">
+        <EntityTypeShape EntityType="BakeryprojModel.Adminlogin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BakeryprojModel.DailyOrder" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BakeryprojModel.Rawmaterial" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BakeryprojModel.Productmaterial" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="BakeryprojModel.RawmaterialStock" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="BakeryprojModel.OrderPlaced" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="BakeryprojModel.DispatchOrder" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="BakeryprojModel.Dailyproduction" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BakeryprojModel.Logintable" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="BakeryprojModel.Customer" Width="1.5" PointX="9.375" PointY="4.75" />
+        <EntityTypeShape EntityType="BakeryprojModel.DeliveryInfo" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="BakeryprojModel.Product" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="BakeryprojModel.State" Width="1.5" PointX="3.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

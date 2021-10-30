@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BakeryprojModelStoreContainer" CdmEntityContainer="BakeryprojEntities">
+    <EntitySetMapping Name="Adminlogins">
+      <EntityTypeMapping TypeName="BakeryprojModel.Adminlogin">
+        <MappingFragment StoreEntitySet="Adminlogin">
+          <ScalarProperty Name="Adminlogin1" ColumnName="Adminlogin" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DailyOrders">
+      <EntityTypeMapping TypeName="BakeryprojModel.DailyOrder">
+        <MappingFragment StoreEntitySet="DailyOrder">
+          <ScalarProperty Name="DailyOrderid" ColumnName="DailyOrderid" />
+          <ScalarProperty Name="Productid" ColumnName="Productid" />
+          <ScalarProperty Name="Orderdate" ColumnName="Orderdate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Customerid" ColumnName="Customerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rawmaterials">
+      <EntityTypeMapping TypeName="BakeryprojModel.Rawmaterial">
+        <MappingFragment StoreEntitySet="Rawmaterials">
+          <ScalarProperty Name="Rawmaterialid" ColumnName="Rawmaterialid" />
+          <ScalarProperty Name="Rawmaterial1" ColumnName="Rawmaterial" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Baseprice" ColumnName="Baseprice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productmaterials">
+      <EntityTypeMapping TypeName="BakeryprojModel.Productmaterial">
+        <MappingFragment StoreEntitySet="Productmaterial">
+          <ScalarProperty Name="Units" ColumnName="Units" />
+          <ScalarProperty Name="Totalprice" ColumnName="Totalprice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Rawmaterialid" ColumnName="Rawmaterialid" />
+          <ScalarProperty Name="Productid" ColumnName="Productid" />
+          <ScalarProperty Name="Productmaterialid" ColumnName="Productmaterialid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RawmaterialStocks">
+      <EntityTypeMapping TypeName="BakeryprojModel.RawmaterialStock">
+        <MappingFragment StoreEntitySet="RawmaterialStock">
+          <ScalarProperty Name="Outstock" ColumnName="Outstock" />
+          <ScalarProperty Name="Instock" ColumnName="Instock" />
+          <ScalarProperty Name="Rawmaterialid" ColumnName="Rawmaterialid" />
+          <ScalarProperty Name="Dates" ColumnName="Dates" />
+          <ScalarProperty Name="RawmaterialStockid" ColumnName="RawmaterialStockid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderPlaceds">
+      <EntityTypeMapping TypeName="BakeryprojModel.OrderPlaced">
+        <MappingFragment StoreEntitySet="OrderPlaced">
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Customerid" ColumnName="Customerid" />
+          <ScalarProperty Name="OrderPlacedid" ColumnName="OrderPlacedid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DispatchOrders">
+      <EntityTypeMapping TypeName="BakeryprojModel.DispatchOrder">
+        <MappingFragment StoreEntitySet="DispatchOrders">
+          <ScalarProperty Name="InvoicePath" ColumnName="InvoicePath" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Customerid" ColumnName="Customerid" />
+          <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+          <ScalarProperty Name="DispatchOrdersId" ColumnName="DispatchOrdersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dailyproductions">
+      <EntityTypeMapping TypeName="BakeryprojModel.Dailyproduction">
+        <MappingFragment StoreEntitySet="Dailyproduction">
+          <ScalarProperty Name="DispatchedQuantity" ColumnName="DispatchedQuantity" />
+          <ScalarProperty Name="ProductionStatus" ColumnName="ProductionStatus" />
+          <ScalarProperty Name="BadProduct" ColumnName="BadProduct" />
+          <ScalarProperty Name="Goodproduct" ColumnName="Goodproduct" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Productdate" ColumnName="Productdate" />
+          <ScalarProperty Name="Productid" ColumnName="Productid" />
+          <ScalarProperty Name="Dailyproductionid" ColumnName="Dailyproductionid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logintables">
+      <EntityTypeMapping TypeName="BakeryprojModel.Logintable">
+        <MappingFragment StoreEntitySet="Logintable">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobileno" ColumnName="Mobileno" />
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Logintableid" ColumnName="Logintableid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="BakeryprojModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="Watsappno" ColumnName="Watsappno" />
+          <ScalarProperty Name="Mobileno" ColumnName="Mobileno" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="Customer1" ColumnName="Customer" />
+          <ScalarProperty Name="Customerid" ColumnName="Customerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryInfoes">
+      <EntityTypeMapping TypeName="BakeryprojModel.DeliveryInfo">
+        <MappingFragment StoreEntitySet="DeliveryInfo">
+          <ScalarProperty Name="VehicleNo" ColumnName="VehicleNo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="WatsappNo" ColumnName="WatsappNo" />
+          <ScalarProperty Name="DeliveryBoyName" ColumnName="DeliveryBoyName" />
+          <ScalarProperty Name="DeliveryInfoId" ColumnName="DeliveryInfoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="BakeryprojModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="AltQty" ColumnName="AltQty" />
+          <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
+          <ScalarProperty Name="Baseprice" ColumnName="Baseprice" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Product1" ColumnName="Product" />
+          <ScalarProperty Name="Productid" ColumnName="Productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="BakeryprojModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="State1" ColumnName="State" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

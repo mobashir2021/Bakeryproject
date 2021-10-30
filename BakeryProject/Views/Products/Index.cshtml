@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BakeryProject.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baseprice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HSNCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CGST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SGST)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Baseprice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HSNCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CGST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SGST)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Productid }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Productid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Productid })
+            </td>
+            <td>
+                @Html.ActionLink("Raw Material", "GetRawmaterial", new { id = item.Productid })
+            </td>
+        </tr>
+    }
+
+</table>

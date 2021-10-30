@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BakeryprojModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Adminlogin">
+    <Key>
+      <PropertyRef Name="Adminlogin" />
+    </Key>
+    <Property Name="Adminlogin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="1000" />
+    <Property Name="Password" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Customerid" />
+    </Key>
+    <Property Name="Customerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Branch" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Address" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Mobileno" Type="varchar" MaxLength="100" />
+    <Property Name="Watsappno" Type="varchar" MaxLength="100" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="GSTIN" Type="varchar" MaxLength="1000" />
+    <Property Name="Code" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DailyOrder">
+    <Key>
+      <PropertyRef Name="DailyOrderid" />
+    </Key>
+    <Property Name="DailyOrderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Productid" Type="int" />
+    <Property Name="Orderdate" Type="datetime" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Customerid" Type="int" />
+  </EntityType>
+  <EntityType Name="Dailyproduction">
+    <Key>
+      <PropertyRef Name="Dailyproductionid" />
+    </Key>
+    <Property Name="Dailyproductionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Productid" Type="int" />
+    <Property Name="Productdate" Type="datetime" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Goodproduct" Type="int" />
+    <Property Name="BadProduct" Type="int" />
+    <Property Name="ProductionStatus" Type="varchar" MaxLength="100" />
+    <Property Name="DispatchedQuantity" Type="int" />
+  </EntityType>
+  <EntityType Name="DeliveryInfo">
+    <Key>
+      <PropertyRef Name="DeliveryInfoId" />
+    </Key>
+    <Property Name="DeliveryInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeliveryBoyName" Type="varchar" MaxLength="1000" />
+    <Property Name="WatsappNo" Type="varchar" MaxLength="100" />
+    <Property Name="Username" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="VehicleNo" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="DispatchOrders">
+    <Key>
+      <PropertyRef Name="DispatchOrdersId" />
+    </Key>
+    <Property Name="DispatchOrdersId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeliveryId" Type="int" />
+    <Property Name="Customerid" Type="int" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="1000" />
+    <Property Name="InvoicePath" Type="varchar" MaxLength="3000" />
+  </EntityType>
+  <EntityType Name="Logintable">
+    <Key>
+      <PropertyRef Name="Logintableid" />
+    </Key>
+    <Property Name="Logintableid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="1000" />
+    <Property Name="Password" Type="varchar" MaxLength="1000" />
+    <Property Name="Roles" Type="varchar" MaxLength="100" />
+    <Property Name="Mobileno" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="OrderPlaced">
+    <Key>
+      <PropertyRef Name="OrderPlacedid" />
+    </Key>
+    <Property Name="OrderPlacedid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customerid" Type="int" />
+    <Property Name="OrderDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Productid" />
+    </Key>
+    <Property Name="Productid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Unit" Type="varchar" MaxLength="100" />
+    <Property Name="Baseprice" Type="varchar" MaxLength="100" />
+    <Property Name="HSNCode" Type="varchar" MaxLength="1000" />
+    <Property Name="AltQty" Type="varchar" MaxLength="1000" />
+    <Property Name="CGST" Type="varchar" MaxLength="100" />
+    <Property Name="SGST" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Productmaterial">
+    <Key>
+      <PropertyRef Name="Productmaterialid" />
+    </Key>
+    <Property Name="Productmaterialid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Productid" Type="int" />
+    <Property Name="Rawmaterialid" Type="int" />
+    <Property Name="Quantity" Type="varchar" MaxLength="100" />
+    <Property Name="Totalprice" Type="varchar" MaxLength="100" />
+    <Property Name="Units" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Rawmaterials">
+    <Key>
+      <PropertyRef Name="Rawmaterialid" />
+    </Key>
+    <Property Name="Rawmaterialid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rawmaterial" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Unit" Type="varchar" MaxLength="100" />
+    <Property Name="Baseprice" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="RawmaterialStock">
+    <Key>
+      <PropertyRef Name="RawmaterialStockid" />
+    </Key>
+    <Property Name="RawmaterialStockid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dates" Type="datetime" />
+    <Property Name="Rawmaterialid" Type="int" />
+    <Property Name="Instock" Type="varchar" MaxLength="100" />
+    <Property Name="Outstock" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="States">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="State" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="BakeryprojModelStoreContainer">
+    <EntitySet Name="Adminlogin" EntityType="Self.Adminlogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DailyOrder" EntityType="Self.DailyOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dailyproduction" EntityType="Self.Dailyproduction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeliveryInfo" EntityType="Self.DeliveryInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DispatchOrders" EntityType="Self.DispatchOrders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Logintable" EntityType="Self.Logintable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderPlaced" EntityType="Self.OrderPlaced" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productmaterial" EntityType="Self.Productmaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rawmaterials" EntityType="Self.Rawmaterials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RawmaterialStock" EntityType="Self.RawmaterialStock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

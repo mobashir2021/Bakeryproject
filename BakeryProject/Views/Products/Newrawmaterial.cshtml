@@ -1,0 +1,50 @@
+﻿@model BakeryProject.Models.RawmaterialVM
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h5><b>Add Raw Material</b></h5>
+
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <br />
+        <br />
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.Rawmaterialid, ViewBag.Rawmaterial as SelectList, "Select Rawmaterial", new { @class = "form-control" })
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    <label>Enter Quantity Required</label>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Quantity Required" } })
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-2"><input type="submit" value="Submit" class="btn btn-primary" /></div>
+                <div class="col-md-8"></div>
+            </div>
+        }
+
+    </div>

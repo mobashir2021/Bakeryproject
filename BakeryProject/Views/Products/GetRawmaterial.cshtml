@@ -1,0 +1,173 @@
+﻿@model BakeryProject.Models.ProductmaterialVM
+@{
+    ViewBag.Title = "GetRawmaterial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    WebGrid grid = new WebGrid(Model.lstmaterials, rowsPerPage: 10);
+}
+<style type="text/css">
+    .w100 { width:100px;}
+    .margin10{ margin-left:10px; }
+    body {
+        font-family: Arial;
+        font-size: 10pt;
+    }
+
+    .Grid {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+    }
+
+        .Grid th {
+            background-color: #F7F7F7;
+            font-weight: bold;
+        }
+
+        .Grid th, .Grid td {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .Grid, .Grid table td {
+            border: 0px solid #ccc;
+        }
+
+            .Grid th a, .Grid th a:visited {
+                color: #333;
+            }
+</style>
+<div class="row">
+    <div class="col-md-4">
+        <h4><b>Raw Material - @Model.Product</b></h4>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+        @Html.HiddenFor(model => model.Productid, new { @id = "productid" })
+        @*@using (Html.BeginForm("Newrawmaterial", "Products", FormMethod.Post))
+        {*@
+        <button class="btn btn-default" onclick='newmaterial("@Model.Productid")'>
+            <i class="fa fa-plus"></i> Add Rawmaterial
+        </button>
+        @*  *@
+    </div>
+</div>
+
+<div id="openpopup" style="display:none;"></div>
+
+@grid.GetHtml(
+    tableStyle: "table table-bordered table-striped mr",
+    rowStyle: "gridrow",
+    alternatingRowStyle: "gridalt",
+        htmlAttributes: new { @id = "WebGrid", @class = "Grid" },
+        columns: grid.Columns(
+            grid.Column(header: "Raw material", format: @<text><div class="editSelect" data-id="@item.Productmaterialid" data-propertyname="Rawmaterialid">@item.Rawmaterial</div></text>),
+            grid.Column(header: "Units", format:@<text><div>@item.Units</div></text>),
+            grid.Column(header: "Quantity", format: @<text><div class="edit" data-id="@item.Productmaterialid" data-propertyname="Quantity">@item.Quantity</div></text>),
+            grid.Column(columnName: "", format: (item) => Html.ActionLink("Delete", "DeleteRawmaterial", "Products" , new{id = item.Productmaterialid}, null))
+
+
+
+
+
+))
+
+@section scripts{
+    <script src="~/Scripts/jeditablefull.js"></script>
+    <script>
+        $(document).ready(function () {
+            var oldValue = '';
+            $('.edit').editable("@Url.Action("savedata", "Products")", {
+                cssclass: 'jeditForm',
+                tooltip: 'click to edit me...',
+                width: 'none',
+                height: 'none',
+                onsubmit: function (settings, original) {
+                    oldValue = original.revert;
+                },
+                submitdata: function () {
+                    return {
+                        id: $(this).data('id'),
+                        PropertyName: $(this).data('propertyname')
+                    }
+                },
+                callback: function (value, settings) {
+                    var jsonData = $.parseJSON(value);
+                    if (jsonData.status) {
+                        $(this).text(jsonData.value);
+                    }
+                    else {
+                        $(this).text(oldValue);
+                    }
+                }
+            });
+            $('.editSelect').editable("@Url.Action("savedata", "Products")", {
+                cssclass: 'jeditForm',
+                tooltip: 'click to edit me...',
+                width: 'none',
+                height: 'none',
+                type: 'select',
+                submit: 'Ok',
+                loadurl: "@Url.Action("GetDropdown", "Products")",
+                loaddata: function () {
+                    return { id: $(this).data('id') }
+                },
+                onsubmit: function (settings, original) {
+                    oldValue = original.revert;
+                },
+                submitdata: function () {
+                    return {
+                        id: $(this).data('id'),
+                        PropertyName: $(this).data('propertyname')
+                    }
+                },
+                callback: function (value, settings) {
+                    var jsonData = $.parseJSON(value);
+                    if (jsonData.status) {
+                        $(this).text(jsonData.value);
+                    }
+                    else {
+                        $(this).text(oldValue);
+                    }
+                }
+            });
+            
+            $('.editSelect').click(function () {
+                $('select', this).addClass('form-control pull-left w100');
+                $('button', this).addClass('btn btn-sm btn-success margin10')
+            });
+
+            
+            
+            
+        });
+
+        function newmaterial(productid) {
+            //var temp = productid;
+            //temp = temp.replace('+', '').replace('+', '').replace(' ', '');
+            //alert(temp);
+            var x = $('#openpopup');
+            x.load("/Products/Newrawmaterial?productid=" + productid, function () {
+                x.dialog({
+                    show: {
+                        effect: "blind",
+                        duration: 1000
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    },
+                    modal: true,
+                    width: 550,
+                    height: 550,
+                    title: "Add",
+                    resizable: false
+                });
+            });
+        }
+    </script>
+
+    
+}
+
+

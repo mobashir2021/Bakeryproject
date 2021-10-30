@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="jumbotron">
+        @using (Html.BeginForm())
+        {
+            
+
+
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"><input type="submit" value="Send Watsapp Order Request" class="btn btn-primary" /></div>
+                <div class="col-md-5"></div>
+            </div>
+        }
+    </div>
+
+<div class="row">
+    <h5>@ViewBag.Message</h5>
+</div>

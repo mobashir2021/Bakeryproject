@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BakeryProject.Models.RawmaterialVM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayName("Raw Material")
+        </th>
+        <th>
+            @Html.DisplayName("Unit")
+        </th>
+        <th>
+            @Html.DisplayName("Available Stock")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rawmaterial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Units)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Add Stock", "AddStock", new { id=item.RawmaterialStockid })
+            
+        </td>
+    </tr>
+}
+
+</table>

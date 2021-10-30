@@ -1,0 +1,77 @@
+﻿@model BakeryProject.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobileno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobileno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Watsappno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Watsappno)
+        </dd>
+
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GSTIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GSTIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Customerid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

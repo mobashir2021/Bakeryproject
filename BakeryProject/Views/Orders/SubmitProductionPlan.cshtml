@@ -1,0 +1,107 @@
+﻿@model IEnumerable<BakeryProject.Models.RawmaterialVM>
+@{
+    ViewBag.Title = "SubmitProductionPlan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    WebGrid webGrid = new WebGrid(Model);
+}
+<style type="text/css">
+    body {
+        font-family: Arial;
+        font-size: 10pt;
+    }
+
+    .Grid {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+    }
+
+        .Grid th {
+            background-color: #F7F7F7;
+            font-weight: bold;
+        }
+
+        .Grid th, .Grid td {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .Grid, .Grid table td {
+            border: 0px solid #ccc;
+        }
+
+            .Grid th a, .Grid th a:visited {
+                color: #333;
+            }
+</style>
+<h4>Required Rawmaterials</h4>
+@using (Html.BeginForm("Forwarded", "Orders", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-4">
+            @if (ViewBag.IsBtnEnabled == true)
+            {
+                <input type="submit" class="btn btn-primary" value="Submit Production Plan" />
+                
+            }
+            else
+            {
+                <input type="submit" class="btn btn-primary" disabled="disabled" value="Submit Production Plan" />
+            }
+
+
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+}
+
+@webGrid.GetHtml(
+    tableStyle: "table table-bordered table-striped mr",
+    rowStyle: "gridrow",
+    alternatingRowStyle: "gridalt",
+        htmlAttributes: new { @id = "WebGrid", @class = "Grid" },
+        columns: webGrid.Columns(
+                 webGrid.Column("Rawmaterial", "Raw Material"),
+                 webGrid.Column("Units", "Units"),
+                 webGrid.Column("Stock", "Available Quantity"),
+                 webGrid.Column("RequiredStock", "Required Quantity"),
+                 webGrid.Column(header: "", format: @<text>@Html.Raw("<input type='button' value='Add Stock' onclick='addstock(" + item.Rawmaterialid + ")'  />")</text>)
+
+))
+
+<div id="openpopup" style="display:none;"></div>
+
+@section scripts{
+
+    <script type="text/javascript">
+        
+
+
+        function addstock(id) {
+            var x = $('#openpopup');
+            x.load("/Orders/AddStockmodal?id=" + id, function () {
+                x.dialog({
+                    show: {
+                        effect: "blind",
+                        duration: 1000
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    },
+                    modal: true,
+                    width: 550,
+                    height: 550,
+                    title: "Order Snapshot",
+                    resizable: false
+                });
+            });
+        }
+
+        
+    </script>
+}

@@ -1,0 +1,70 @@
+﻿@model BakeryProject.Models.RawmaterialVM
+
+@{
+    ViewBag.Title = "Create";
+    
+}
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+
+
+    <div class="form-horizontal">
+        <h4>Add Rawmaterial Stock</h4>
+        <hr />
+        @Html.HiddenFor(model => model.RawmaterialStockid)
+        <div class="form-group">
+            @Html.Label("Raw Material", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Rawmaterial, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Stock, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn btn-primary" onclick="addStock()" >Add Stock</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    function addStock() {
+        var rawstockid = $('#RawmaterialStockid').val();
+        var stock = $('#Stock').val();
+
+
+
+        var rawmaterials = { "RawmaterialStockid": rawstockid, "Stock": stock }
+        $.ajax({  
+            type: "POST",  
+            url: "@Url.Action("SaveStockmodal", "Orders")",  
+            data: JSON.stringify(rawmaterials),  
+            contentType: "application/json; charset=utf-8",  
+            dataType: "json",  
+            success: function (response) {
+
+                window.location.reload();
+                
+            },  
+            failure: function(response) {  
+                alert(response.responseText);  
+            },  
+            error: function(response) {  
+                alert(response.responseText);  
+            }  
+        });  
+    }
+</script>
+
+
